@@ -1,5 +1,7 @@
 package Repository;
 
-public interface IRepo {
+import Model.ProgramState.PrgState;
 
+public interface IRepo {
+    PrgState getCrtPrg();
 }

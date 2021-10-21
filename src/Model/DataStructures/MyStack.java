@@ -35,4 +35,9 @@ public class MyStack<T> implements MyIStack<T>{
         stack_string = " [ " + top().toString() + " ]";
         return stack_string;
     }
+
+    @Override
+    public int size() {
+        return stack.size();
+    }
 }

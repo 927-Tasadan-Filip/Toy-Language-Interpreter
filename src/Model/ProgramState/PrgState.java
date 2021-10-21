@@ -56,9 +56,9 @@ public class PrgState{
     @Override
     public String toString() {
         String current_state_string = new String();
-        current_state_string.concat(exeStack.toString());
-        current_state_string.concat(symTable.toString());
-        current_state_string.concat(out.toString());
+        current_state_string += "Execution stack " + exeStack.toString() + "\n";
+        current_state_string += "Symbol table " + symTable.toString() + "\n";
+        current_state_string += "Out " + out.toString() + "\n";
 
         return current_state_string;
     }

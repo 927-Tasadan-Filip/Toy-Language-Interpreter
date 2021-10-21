@@ -6,4 +6,5 @@ public interface MyIList<T> {
     void addAtPos(int pos, T elem);
     T remove(int pos);
     T getElem(int pos);
+    String toString();
 }

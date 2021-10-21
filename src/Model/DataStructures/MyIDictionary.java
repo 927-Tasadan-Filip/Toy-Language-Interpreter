@@ -10,4 +10,5 @@ public interface MyIDictionary<K, V> {
     V lookup(K key) throws MyException;
     void update(K key, V elem);
     V remove(K key);
+    String toString();
 }

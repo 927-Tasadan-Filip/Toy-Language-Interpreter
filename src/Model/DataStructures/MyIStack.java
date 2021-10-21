@@ -5,4 +5,6 @@ public interface MyIStack<T>{
     void push(T v);
     T pop();
     T top();
+    int size();
+    String toString();
 }

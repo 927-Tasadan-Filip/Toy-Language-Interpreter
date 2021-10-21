@@ -53,7 +53,7 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
             dictionary_string += key.toString() + "->";
             dictionary_string += dictionary.get(key).toString() + " ";
         }
-        dictionary_string = "]";
+        dictionary_string += "]";
         return dictionary_string;
     }
 }
