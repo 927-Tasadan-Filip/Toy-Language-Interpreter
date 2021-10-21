@@ -1,5 +1,6 @@
 package Model.Statement;
 
+import Model.DataStructures.MyIStack;
 import UserDefinedExceptions.MyException;
 
 public class CompStatement implements IStmt {

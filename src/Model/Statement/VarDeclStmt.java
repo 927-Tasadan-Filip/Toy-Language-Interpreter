@@ -1,5 +1,8 @@
 package Model.Statement;
 
+import Model.DataStructures.MyIStack;
+import Model.Type.Type;
+import Model.Value.Value;
 import UserDefinedExceptions.MyException;
 
 public class VarDeclStmt implements IStmt{
@@ -42,7 +45,7 @@ public class VarDeclStmt implements IStmt{
             throw new MyException("variable is already declared.");
         }
         else {
-            symTbl.add(name, typ.defaultValue());
+            symTbl.update(name, typ.defaultValue());
         }
 
         return state;

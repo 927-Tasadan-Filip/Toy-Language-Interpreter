@@ -1,6 +1,8 @@
 package Model.Value;
 
+
 import Model.Type.BoolType;
+import Model.Type.Type;
 
 public class BoolValue implements Value {
     private boolean val;
@@ -23,7 +25,7 @@ public class BoolValue implements Value {
         return Boolean.toString(val);
     }
 
-    public BoolType getType() {
+    public Type getType() {
         return new BoolType();
     }
 }

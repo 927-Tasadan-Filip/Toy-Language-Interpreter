@@ -1,5 +1,10 @@
 package Model.Statement;
 
+import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIStack;
+import Model.Expressions.Exp;
+import Model.Type.Type;
+import Model.Value.Value;
 import UserDefinedExceptions.MyException;
 
 public class AssignStmt implements IStmt {

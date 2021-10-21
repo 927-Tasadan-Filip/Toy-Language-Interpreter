@@ -1,8 +1,10 @@
 package Model.Statement;
 
+import Model.Expressions.Exp;
+import Model.Value.Value;
 import UserDefinedExceptions.MyException;
 
-public class PrintStmt {
+public class PrintStmt implements IStmt{
     private Exp exp;
 
     public Exp getExp() {

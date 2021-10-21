@@ -1,5 +1,8 @@
 package Model.Statement;
 
+import Model.DataStructures.MyIStack;
+import Model.Expressions.Exp;
+import Model.Value.Value;
 import UserDefinedExceptions.MyException;
 
 public class IfStmt implements IStmt{
