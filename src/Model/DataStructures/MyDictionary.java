@@ -3,6 +3,7 @@ package Model.DataStructures;
 import UserDefinedExceptions.MyException;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     private HashMap<K,V> dictionary;
@@ -42,5 +43,17 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     @Override
     public V remove(K key) {
         return dictionary.remove(key);
+    }
+
+    @Override
+    public String toString() {
+        String dictionary_string = new String();
+        dictionary_string = "[ ";
+        for(K key: dictionary.keySet()) {
+            dictionary_string += key.toString() + "->";
+            dictionary_string += dictionary.get(key).toString() + " ";
+        }
+        dictionary_string = "]";
+        return dictionary_string;
     }
 }

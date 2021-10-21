@@ -1,6 +1,7 @@
-package Model.Statement;
+package Model.Statements;
 
 import Model.DataStructures.MyIStack;
+import Model.ProgramState.PrgState;
 import UserDefinedExceptions.MyException;
 
 public class CompStatement implements IStmt {
@@ -35,7 +36,7 @@ public class CompStatement implements IStmt {
     }
 
     public PrgState execute(PrgState state) throws MyException {
-        MyIStack<IStmt> stk=state.getStk();
+        MyIStack<IStmt> stk=state.getExeStack();
         stk.push(snd);
         stk.push(first);
         return state;

@@ -1,6 +1,6 @@
-package Model.Type;
+package Model.Types;
 
-import Model.Value.Value;
+import Model.Values.Value;
 
 public interface Type {
     Value defaultValue();

@@ -1,8 +1,9 @@
 package Model.Expressions;
 
-import Model.Type.BoolType;
-import Model.Value.BoolValue;
-import Model.Value.Value;
+import Model.DataStructures.MyIDictionary;
+import Model.Types.BoolType;
+import Model.Values.BoolValue;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 import java.util.HashMap;

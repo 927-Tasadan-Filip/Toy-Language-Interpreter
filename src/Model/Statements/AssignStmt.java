@@ -1,10 +1,11 @@
-package Model.Statement;
+package Model.Statements;
 
 import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
-import Model.Type.Type;
-import Model.Value.Value;
+import Model.ProgramState.PrgState;
+import Model.Types.Type;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public class AssignStmt implements IStmt {
@@ -40,7 +41,7 @@ public class AssignStmt implements IStmt {
     }
 
     public PrgState execute(PrgState state) throws MyException {
-        MyIStack<IStmt> stk = state.getStk();
+        MyIStack<IStmt> stk = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
         if (symTbl.isDefined(id)) {
             Value val = exp.eval(symTbl);

@@ -1,6 +1,7 @@
 package Model.Expressions;
 
-import Model.Value.Value;
+import Model.DataStructures.MyIDictionary;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public class VarExp implements Exp{

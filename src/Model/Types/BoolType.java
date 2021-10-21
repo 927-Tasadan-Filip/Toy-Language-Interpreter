@@ -1,9 +1,9 @@
-package Model.Type;
+package Model.Types;
 
-import Model.Value.IntValue;
-import Model.Value.Value;
+import Model.Values.BoolValue;
+import Model.Values.Value;
 
-public class IntType implements Type{
+public class BoolType implements Type{
     public boolean equals(Object another){
         if (another instanceof IntType)
             return true;
@@ -11,11 +11,11 @@ public class IntType implements Type{
             return false;
     }
     public String toString() {
-        return "int";
+        return "bool";
     }
 
     @Override
     public Value defaultValue() {
-        return new IntValue(0);
+        return new BoolValue(false);
     }
 }

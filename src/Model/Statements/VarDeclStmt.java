@@ -1,8 +1,10 @@
-package Model.Statement;
+package Model.Statements;
 
+import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIStack;
-import Model.Type.Type;
-import Model.Value.Value;
+import Model.ProgramState.PrgState;
+import Model.Types.Type;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public class VarDeclStmt implements IStmt{
@@ -39,7 +41,7 @@ public class VarDeclStmt implements IStmt{
 
     @Override
     public PrgState execute(PrgState state) throws MyException {
-        MyIStack<IStmt> stk = state.getStk();
+        MyIStack<IStmt> stk = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
         if (symTbl.isDefined(name)) {
             throw new MyException("variable is already declared.");

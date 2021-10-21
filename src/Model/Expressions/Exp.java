@@ -1,7 +1,7 @@
 package Model.Expressions;
 
 import Model.DataStructures.MyIDictionary;
-import Model.Value.Value;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public interface Exp {

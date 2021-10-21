@@ -1,8 +1,11 @@
-package Model.Statement;
+package Model.Statements;
 
+import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
-import Model.Value.Value;
+import Model.ProgramState.PrgState;
+import Model.Values.BoolValue;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public class IfStmt implements IStmt{
@@ -43,21 +46,21 @@ public class IfStmt implements IStmt{
     }
 
     public PrgState execute(PrgState state) throws MyException {
-        MyIStack<IStmt> stk = state.getStk();
+        MyIStack<IStmt> stk = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
 
         Value cond = exp.eval(symTbl);
-
-        if(cond.getType() != "bool") {
-            throw new MyException("Conditional expression is not a boolean");
+        if(cond.getType().equals("bool")) {
+            BoolValue v1 = (BoolValue) cond;
+            if(v1.getVal()) {
+                stk.push(thenS);
+            }
+            else {
+                stk.push(elseS);
+            }
         }
         else {
-           if(cond.getVal()) {
-               stk.push(thenS);
-           }
-           else {
-               stk.push(elseS);
-           }
+            throw new MyException("Conditional expression is not a boolean");
         }
 
         return state;

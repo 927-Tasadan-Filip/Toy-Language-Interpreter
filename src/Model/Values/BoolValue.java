@@ -1,8 +1,8 @@
-package Model.Value;
+package Model.Values;
 
 
-import Model.Type.BoolType;
-import Model.Type.Type;
+import Model.Types.BoolType;
+import Model.Types.Type;
 
 public class BoolValue implements Value {
     private boolean val;

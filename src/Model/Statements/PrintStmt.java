@@ -1,7 +1,10 @@
-package Model.Statement;
+package Model.Statements;
 
+import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIList;
 import Model.Expressions.Exp;
-import Model.Value.Value;
+import Model.ProgramState.PrgState;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 public class PrintStmt implements IStmt{
@@ -28,7 +31,7 @@ public class PrintStmt implements IStmt{
     public PrgState execute(PrgState state) throws MyException {
         MyIList<Value> out = state.getOut();
         MyIDictionary<String,Value> symTbl= state.getSymTable();
-        Exp evaluated_exp = exp.eval(symTbl);
+        Value evaluated_exp = exp.eval(symTbl);
         out.append(evaluated_exp);
         return state;
     }

@@ -1,8 +1,9 @@
 package Model.Expressions;
 
-import Model.Type.IntType;
-import Model.Value.IntValue;
-import Model.Value.Value;
+import Model.DataStructures.MyIDictionary;
+import Model.Types.IntType;
+import Model.Values.IntValue;
+import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
 import java.util.HashMap;

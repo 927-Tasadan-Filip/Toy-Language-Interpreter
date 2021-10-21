@@ -28,4 +28,11 @@ public class MyStack<T> implements MyIStack<T>{
     public T top() {
         return stack.peek();
     }
+
+    @Override
+    public String toString() {
+        String stack_string = new String();
+        stack_string = " [ " + top().toString() + " ]";
+        return stack_string;
+    }
 }
