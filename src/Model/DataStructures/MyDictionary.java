@@ -27,11 +27,11 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
 
     @Override
     public V lookup(K key) throws MyException {
-        try{
-            return dictionary.get(key);
-        }
-        catch (Exception exc) {
+        V ret_val = dictionary.get(key);
+        if(ret_val == null) {
             throw new MyException("variable x is not defined");
+        } else {
+            return ret_val;
         }
     }
 
