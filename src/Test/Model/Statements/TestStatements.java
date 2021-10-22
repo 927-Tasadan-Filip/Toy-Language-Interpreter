@@ -24,7 +24,6 @@ public class TestStatements {
         IStmt var_decl = new VarDeclStmt("a", new IntType());
         PrgState crtPrgState = new PrgState(stk,symtbl,out, var_decl);
 
-        System.out.println(crtPrgState.getExeStack().pop());
 
         try {
             crtPrgState = var_decl.execute(crtPrgState);

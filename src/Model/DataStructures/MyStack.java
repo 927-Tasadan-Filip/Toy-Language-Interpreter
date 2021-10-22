@@ -1,5 +1,7 @@
 package Model.DataStructures;
 
+import UserDefinedExceptions.MyException;
+
 import java.util.Stack;
 
 public class MyStack<T> implements MyIStack<T>{
@@ -20,20 +22,29 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public T pop() {
+    public T pop() throws MyException {
+        if(stack.isEmpty()) {
+            throw new MyException("Empty stack.");
+        }
         return stack.pop();
+
     }
 
     @Override
-    public T top() {
+    public T top() throws MyException{
+        if(stack.isEmpty()) {
+            throw new MyException("Empty stack.");
+        }
         return stack.peek();
     }
 
     @Override
     public String toString() {
-        String stack_string;
+        String stack_string = "";
         if(!(stack.isEmpty())) {
-            stack_string = " [ " + top().toString() + " ]";
+            try {
+                stack_string = " [ " + top().toString() + " ]";
+            } catch (MyException ignored) {}
         }
         else {
             stack_string = " []";

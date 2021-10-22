@@ -29,7 +29,7 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     public V lookup(K key) throws MyException {
         V ret_val = dictionary.get(key);
         if(ret_val == null) {
-            throw new MyException("variable x is not defined");
+            throw new MyException("There is no element with the given key.");
         } else {
             return ret_val;
         }

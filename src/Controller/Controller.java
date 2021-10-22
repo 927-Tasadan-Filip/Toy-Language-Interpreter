@@ -30,7 +30,7 @@ public class Controller {
     public PrgState oneStep(PrgState state) throws MyException {
         MyIStack<IStmt> stk=state.getExeStack();
         if(stk.isEmpty()) {
-            throw new MyException("prgstate stack is empty");
+            throw new MyException("Program state stack is empty");
         }
         IStmt crtStmt = stk.pop();
         return crtStmt.execute(state);
