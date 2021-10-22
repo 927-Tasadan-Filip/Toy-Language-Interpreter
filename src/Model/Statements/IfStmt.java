@@ -4,6 +4,7 @@ import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
+import Model.Types.BoolType;
 import Model.Values.BoolValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -50,7 +51,7 @@ public class IfStmt implements IStmt{
         MyIDictionary<String, Value> symTbl = state.getSymTable();
 
         Value cond = exp.eval(symTbl);
-        if(cond.getType().equals("bool")) {
+        if(cond.getType().equals(new BoolType())) {
             BoolValue v1 = (BoolValue) cond;
             if(v1.getVal()) {
                 stk.push(thenS);

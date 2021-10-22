@@ -31,8 +31,13 @@ public class MyStack<T> implements MyIStack<T>{
 
     @Override
     public String toString() {
-        String stack_string = new String();
-        stack_string = " [ " + top().toString() + " ]";
+        String stack_string;
+        if(!(stack.isEmpty())) {
+            stack_string = " [ " + top().toString() + " ]";
+        }
+        else {
+            stack_string = " []";
+        }
         return stack_string;
     }
 

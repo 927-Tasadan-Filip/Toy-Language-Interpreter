@@ -24,7 +24,7 @@ public class TestExpressions {
         }
         Value v2 = new IntValue(2);
         Exp ve2 = new ValueExp(v2);
-        Exp ar3 = new ArithExp(ve1, ve2, '+');
+        Exp ar3 = new ArithExp('+',ve1, ve2);
         try {
             assert ((((IntValue)(ar3.eval(dict))).getVal()) == 3);
         }

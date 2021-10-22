@@ -25,4 +25,8 @@ public class ValueExp implements Exp{
         return e;
     }
 
+    @Override
+    public String toString() {
+        return e.toString();
+    }
 }

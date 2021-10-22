@@ -77,4 +77,8 @@ public class LogicExp implements Exp{
         else throw new MyException("Operand1 is not a boolean");
     }
 
+    @Override
+    public String toString() {
+        return e1.toString() + " " + op + " " + e2.toString();
+    }
 }

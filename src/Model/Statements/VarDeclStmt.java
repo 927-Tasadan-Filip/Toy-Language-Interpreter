@@ -42,6 +42,7 @@ public class VarDeclStmt implements IStmt{
     @Override
     public PrgState execute(PrgState state) throws MyException {
         MyIStack<IStmt> stk = state.getExeStack();
+
         MyIDictionary<String, Value> symTbl = state.getSymTable();
         if (symTbl.isDefined(name)) {
             throw new MyException("variable is already declared.");
@@ -49,7 +50,6 @@ public class VarDeclStmt implements IStmt{
         else {
             symTbl.update(name, typ.defaultValue());
         }
-
         return state;
     }
 }

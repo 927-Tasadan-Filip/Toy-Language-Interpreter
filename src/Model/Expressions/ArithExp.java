@@ -49,7 +49,7 @@ public class ArithExp implements Exp{
         initialiseOpMap();
     }
 
-    public ArithExp(Exp e1, Exp e2, char op) {
+    public ArithExp(char op, Exp e1, Exp e2) {
         this.e1 = e1;
         this.e2 = e2;
         this.op = op;
@@ -87,5 +87,10 @@ public class ArithExp implements Exp{
         }
         else
             throw new MyException("first operand is not an integer");
+    }
+
+    @Override
+    public String toString() {
+        return e1.toString() + " " + op + " " + e2.toString();
     }
 }
