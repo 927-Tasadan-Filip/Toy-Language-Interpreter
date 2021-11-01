@@ -3,13 +3,15 @@ package Model.DataStructures;
 import UserDefinedExceptions.MyException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MyList<T> implements MyIList<T>{
-    private ArrayList<T> list;
+    private LinkedList<T> list;
 
     public MyList() {
-        list = new ArrayList<T>();
+        list = new LinkedList<T>();
     }
 
     @Override
@@ -51,12 +53,14 @@ public class MyList<T> implements MyIList<T>{
     public String toString() {
         String list_string = new String();
         list_string = "[ ";
-        for(int i = 0; i < list.size(); i++) {
-            list_string += list.get(i);
+        int i = 0;
+        for (T t : list) {
+            list_string += t;
 
-            if(i < list.size() - 1) {
+            if (i < list.size() - 1) {
                 list_string += ", ";
             }
+             i++;
         }
         list_string += " ]";
         return list_string;

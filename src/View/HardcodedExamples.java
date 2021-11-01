@@ -54,7 +54,6 @@ public class HardcodedExamples {
         PrgState crtPrgState= new PrgState(stk,symtbl,out, ex1);
         view_repo = new Repo(crtPrgState);
         view_controller = new Controller(view_repo);
-        view_controller.setDisplayFlagTrue();
 
         try {
             askDisplayFlag();
@@ -78,7 +77,6 @@ public class HardcodedExamples {
         PrgState crtPrgState= new PrgState(stk,symtbl,out, ex2);
         view_repo = new Repo(crtPrgState);
         view_controller = new Controller(view_repo);
-        view_controller.setDisplayFlagTrue();
 
         try {
             askDisplayFlag();
@@ -103,7 +101,6 @@ public class HardcodedExamples {
         PrgState crtPrgState= new PrgState(stk,symtbl,out, ex3);
         view_repo = new Repo(crtPrgState);
         view_controller = new Controller(view_repo);
-        view_controller.setDisplayFlagTrue();
 
         try {
             askDisplayFlag();
