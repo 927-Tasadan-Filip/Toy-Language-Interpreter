@@ -10,8 +10,11 @@ import Model.Statements.VarDeclStmt;
 import Model.Types.BoolType;
 import Model.Types.IntType;
 import Model.Values.IntValue;
+import Model.Values.StringValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
+
+import java.io.BufferedReader;
 
 public class TestStatements {
     public static void main(String[] args) {
@@ -19,10 +22,11 @@ public class TestStatements {
         MyIDictionary<String, Value> symtbl =
                 new MyDictionary<String,Value>();
         MyIList<Value> out = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable = new MyDictionary<>();
 
         // VarDeclStmt test
         IStmt var_decl = new VarDeclStmt("a", new IntType());
-        PrgState crtPrgState = new PrgState(stk,symtbl,out, var_decl);
+        PrgState crtPrgState = new PrgState(stk,symtbl,out, fileTable, var_decl);
 
 
         try {

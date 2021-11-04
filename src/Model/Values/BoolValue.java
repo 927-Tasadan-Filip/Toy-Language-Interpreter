@@ -3,6 +3,7 @@ package Model.Values;
 
 import Model.Types.BoolType;
 import Model.Types.Type;
+import UserDefinedExceptions.MyException;
 
 public class BoolValue implements Value {
     private boolean val;
@@ -19,6 +20,15 @@ public class BoolValue implements Value {
 
     public BoolValue(boolean v) {
         val = v;
+    }
+
+    public boolean equals(Object another)  {
+        if(another instanceof BoolValue) {
+            if(((BoolValue) another).getVal() == this.getVal()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String toString() {

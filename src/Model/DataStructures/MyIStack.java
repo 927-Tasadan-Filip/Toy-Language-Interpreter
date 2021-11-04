@@ -8,5 +8,7 @@ public interface MyIStack<T>{
     T pop() throws MyException;
     T top() throws MyException;
     int size();
+    MyIStack<T> shallowCopy();
     String toString();
+
 }

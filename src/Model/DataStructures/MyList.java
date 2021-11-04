@@ -52,17 +52,13 @@ public class MyList<T> implements MyIList<T>{
     @Override
     public String toString() {
         String list_string = new String();
-        list_string = "[ ";
+        list_string = "";
         int i = 0;
         for (T t : list) {
             list_string += t;
-
-            if (i < list.size() - 1) {
-                list_string += ", ";
-            }
+            list_string += "\n";
              i++;
         }
-        list_string += " ]";
         return list_string;
     }
 }

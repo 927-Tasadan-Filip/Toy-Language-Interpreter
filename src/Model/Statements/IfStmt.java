@@ -14,6 +14,10 @@ public class IfStmt implements IStmt{
     private IStmt thenS;
     private IStmt elseS;
 
+    public IfStmt() {};
+
+    public IfStmt(Exp e, IStmt t, IStmt el) {exp=e; thenS=t;elseS=el;}
+
     public Exp getExp() {
         return exp;
     }
@@ -37,10 +41,6 @@ public class IfStmt implements IStmt{
     public void setElseS(IStmt elseS) {
         this.elseS = elseS;
     }
-
-    public IfStmt() {};
-
-    public IfStmt(Exp e, IStmt t, IStmt el) {exp=e; thenS=t;elseS=el;}
 
     public String toString() {
         return "(IF("+ exp.toString()+") THEN(" +thenS.toString() +")ELSE("+elseS.toString()+"))";

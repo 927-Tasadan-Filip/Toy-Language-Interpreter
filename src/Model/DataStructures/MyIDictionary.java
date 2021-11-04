@@ -11,4 +11,5 @@ public interface MyIDictionary<K, V> {
     void update(K key, V elem);
     V remove(K key);
     String toString();
+    String keysToString();
 }

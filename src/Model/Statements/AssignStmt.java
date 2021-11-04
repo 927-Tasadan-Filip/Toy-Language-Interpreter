@@ -14,6 +14,14 @@ public class AssignStmt implements IStmt {
     private String id;
     private Exp exp;
 
+    public AssignStmt() {
+    }
+
+    public AssignStmt(String id, Exp exp) {
+        this.id = id;
+        this.exp = exp;
+    }
+
     public String getId() {
         return id;
     }
@@ -30,13 +38,6 @@ public class AssignStmt implements IStmt {
         this.exp = exp;
     }
 
-    public AssignStmt() {
-    }
-
-    public AssignStmt(String id, Exp exp) {
-        this.id = id;
-        this.exp = exp;
-    }
 
     public String toString() {
         return id + "=" + exp.toString();

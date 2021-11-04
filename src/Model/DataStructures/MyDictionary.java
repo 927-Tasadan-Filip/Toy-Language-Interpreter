@@ -48,12 +48,21 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     @Override
     public String toString() {
         String dictionary_string = new String();
-        dictionary_string = "[ ";
+        dictionary_string = "";
         for(K key: dictionary.keySet()) {
             dictionary_string += key.toString() + "->";
-            dictionary_string += dictionary.get(key).toString() + " ";
+            dictionary_string += dictionary.get(key).toString() + "\n";
         }
-        dictionary_string += "]";
+
+        return dictionary_string;
+    }
+
+    @Override
+    public String keysToString() {
+        String dictionary_string = new String();
+        for(K key: dictionary.keySet()) {
+            dictionary_string += key.toString() + "\n";
+        }
         return dictionary_string;
     }
 }

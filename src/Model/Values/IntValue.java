@@ -20,6 +20,15 @@ public class IntValue implements Value {
         val = v;
     }
 
+    public boolean equals(Object another)  {
+        if(another instanceof IntValue) {
+            if(((IntValue) another).getVal() == this.getVal()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String toString() {
         return Integer.toString(val);
     }

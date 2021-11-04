@@ -2,6 +2,7 @@ package Controller;
 
 import Model.DataStructures.MyIStack;
 import Model.ProgramState.PrgState;
+import Model.Statements.CompStatement;
 import Model.Statements.IStmt;
 import Repository.IRepo;
 import UserDefinedExceptions.MyException;
@@ -45,9 +46,11 @@ public class Controller {
     public void allStep() throws MyException{
         PrgState prg = program_repo.getCrtPrg(); // repo is the controller field of type MyRepoInterface
         printPrgState(prg);
+        program_repo.logPrgStateExec();
         while (!prg.getExeStack().isEmpty()) {
             oneStep(prg);
             printPrgState(prg);
+            program_repo.logPrgStateExec();
         }
     }
 }
