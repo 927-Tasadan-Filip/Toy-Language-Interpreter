@@ -63,7 +63,7 @@ public class IfStmt implements IStmt{
             }
         }
         else {
-            throw new MyException("Conditional expression is not a boolean");
+            throw new MyException("If conditional expression is not a boolean");
         }
 
         return state;

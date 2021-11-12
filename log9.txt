@@ -1,0 +1,265 @@
+Heap:
+Execution stack:
+(int v, (v=4, (while(v > 0) (print(v), v=v - 1), print(v))))
+Symbol table:
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+int v
+(v=4, (while(v > 0) (print(v), v=v - 1), print(v)))
+Symbol table:
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+(v=4, (while(v > 0) (print(v), v=v - 1), print(v)))
+Symbol table:
+v->0
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+v=4
+(while(v > 0) (print(v), v=v - 1), print(v))
+Symbol table:
+v->0
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+(while(v > 0) (print(v), v=v - 1), print(v))
+Symbol table:
+v->4
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->4
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+(print(v), v=v - 1)
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->4
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+print(v)
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->4
+Out:
+FileTable:
+
+Heap:
+Execution stack:
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->4
+Out:
+4
+FileTable:
+
+Heap:
+Execution stack:
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->3
+Out:
+4
+FileTable:
+
+Heap:
+Execution stack:
+(print(v), v=v - 1)
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->3
+Out:
+4
+FileTable:
+
+Heap:
+Execution stack:
+print(v)
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->3
+Out:
+4
+FileTable:
+
+Heap:
+Execution stack:
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->3
+Out:
+4
+3
+FileTable:
+
+Heap:
+Execution stack:
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->2
+Out:
+4
+3
+FileTable:
+
+Heap:
+Execution stack:
+(print(v), v=v - 1)
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->2
+Out:
+4
+3
+FileTable:
+
+Heap:
+Execution stack:
+print(v)
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->2
+Out:
+4
+3
+FileTable:
+
+Heap:
+Execution stack:
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->2
+Out:
+4
+3
+2
+FileTable:
+
+Heap:
+Execution stack:
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->1
+Out:
+4
+3
+2
+FileTable:
+
+Heap:
+Execution stack:
+(print(v), v=v - 1)
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->1
+Out:
+4
+3
+2
+FileTable:
+
+Heap:
+Execution stack:
+print(v)
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->1
+Out:
+4
+3
+2
+FileTable:
+
+Heap:
+Execution stack:
+v=v - 1
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->1
+Out:
+4
+3
+2
+1
+FileTable:
+
+Heap:
+Execution stack:
+while(v > 0) (print(v), v=v - 1)
+print(v)
+Symbol table:
+v->0
+Out:
+4
+3
+2
+1
+FileTable:
+
+Heap:
+Execution stack:
+print(v)
+Symbol table:
+v->0
+Out:
+4
+3
+2
+1
+FileTable:
+
+Heap:
+Execution stack:
+Symbol table:
+v->0
+Out:
+4
+3
+2
+1
+0
+FileTable:
+

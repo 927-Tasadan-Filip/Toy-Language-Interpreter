@@ -130,6 +130,20 @@ class Interpreter {
         IRepo repo8 = new Repo(prg8, "log8.txt");
         Controller ctr8 = new Controller(repo8);
 
+        // While statement test
+        IStmt ex9 = new CompStatement(new VarDeclStmt("v", new IntType()),
+                        new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(4))),
+                                new CompStatement(new WhileStmt(new RelationalExp(">", new VarExp("v"), new ValueExp(new IntValue(0))), new CompStatement(new PrintStmt(new VarExp("v")), new AssignStmt("v", new ArithExp('-', new VarExp("v"), new ValueExp(new IntValue(1)))))),
+                                        new PrintStmt(new VarExp("v")))));
+        MyIStack<IStmt> stk9 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl9 = new MyDictionary<String, Value>();
+        MyIList<Value> out9 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable9 = new MyDictionary<>();
+        MyIHeap<Value> heap9 = new MyHeap<>();
+        PrgState prg9 = new PrgState(stk9, symtbl9, out9, fileTable9, heap9, ex9);
+        IRepo repo9= new Repo(prg9, "log9.txt");
+        Controller ctr9 = new Controller(repo9);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", ex1.toString(), ctr1));
@@ -140,6 +154,7 @@ class Interpreter {
         menu.addCommand(new RunExample("6", ex6.toString(), ctr6));
         menu.addCommand(new RunExample("7", ex7.toString(), ctr7));
         menu.addCommand(new RunExample("8", ex8.toString(), ctr8));
+        menu.addCommand(new RunExample("9", ex9.toString(), ctr9));
         menu.show();
     }
 }
