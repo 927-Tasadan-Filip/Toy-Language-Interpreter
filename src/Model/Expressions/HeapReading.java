@@ -31,7 +31,7 @@ public class HeapReading implements Exp{
             if(hp.isDefined(ref_addr)) {
                 return hp.lookup(ref_addr);
             } else {
-                throw new MyException("The address" + ref_addr + "is not defined in symbolTable");
+                throw new MyException("The address " + ref_addr + " is not defined in symbolTable");
             }
         } else {
             throw new MyException("The expression type is not RefValue");

@@ -24,7 +24,7 @@ public class RefType implements Type{
 
     @Override
     public String toString() {
-        return "RefType(" + inner.toString() + ")";
+        return "Ref " + inner.toString();
     }
 
     public Value defaultValue() {

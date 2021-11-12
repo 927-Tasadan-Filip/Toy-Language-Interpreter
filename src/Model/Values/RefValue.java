@@ -44,6 +44,6 @@ public class RefValue implements Value{
 
     @Override
     public String toString() {
-        return "RefValue(" + this.addr + ", " + locationType.toString() + ")";
+        return "(" + this.addr + ", " + locationType.toString() + ")";
     }
 }

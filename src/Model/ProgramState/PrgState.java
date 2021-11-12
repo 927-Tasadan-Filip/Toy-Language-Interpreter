@@ -82,11 +82,11 @@ public class PrgState{
     @Override
     public String toString() {
         String current_state_string = "";
+        current_state_string += "Heap:\n" + heap.toString();
         current_state_string += "Execution stack:\n" + exeStack.toString();
         current_state_string += "Symbol table:\n" + symTable.toString();
         current_state_string += "Out:\n" + out.toString();
         current_state_string += "FileTable:\n" + fileTable.keysToString();
-        current_state_string += "Heap:\n" + heap.toString();
         return current_state_string;
     }
 

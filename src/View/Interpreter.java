@@ -2,14 +2,12 @@ package View;
 
 import Controller.Controller;
 import Model.DataStructures.*;
-import Model.Expressions.ArithExp;
-import Model.Expressions.RelationalExp;
-import Model.Expressions.ValueExp;
-import Model.Expressions.VarExp;
+import Model.Expressions.*;
 import Model.ProgramState.PrgState;
 import Model.Statements.*;
 import Model.Types.BoolType;
 import Model.Types.IntType;
+import Model.Types.RefType;
 import Model.Types.StringType;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
@@ -25,8 +23,7 @@ class Interpreter {
         IStmt ex1 = new CompStatement(new VarDeclStmt("v", new IntType()),
                 new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(2))), new PrintStmt(new VarExp("v"))));
         MyIStack<IStmt> stk1 = new MyStack<IStmt>();
-        MyIDictionary<String, Value> symtbl1 =
-                new MyDictionary<String, Value>();
+        MyIDictionary<String, Value> symtbl1 = new MyDictionary<String, Value>();
         MyIList<Value> out1 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable1 = new MyDictionary<>();
         MyIHeap<Value> heap1 = new MyHeap<>();
@@ -39,8 +36,7 @@ class Interpreter {
                         new CompStatement(new AssignStmt("a", new ArithExp('+', new ValueExp(new IntValue(2)), new ArithExp('*', new ValueExp(new IntValue(3)), new ValueExp(new IntValue(5))))),
                                 new CompStatement(new AssignStmt("b", new ArithExp('+', new VarExp("a"), new ValueExp(new IntValue(1)))), new PrintStmt(new VarExp("b"))))));
         MyIStack<IStmt> stk2 = new MyStack<IStmt>();
-        MyIDictionary<String, Value> symtbl2 =
-                new MyDictionary<String, Value>();
+        MyIDictionary<String, Value> symtbl2 = new MyDictionary<String, Value>();
         MyIList<Value> out2 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable2 = new MyDictionary<>();
         MyIHeap<Value> heap2 = new MyHeap<>();
@@ -54,8 +50,7 @@ class Interpreter {
                                 new CompStatement(new IfStmt(new VarExp("a"), new AssignStmt("v", new ValueExp(new IntValue(2))), new AssignStmt("v", new ValueExp(new IntValue(3)))), new PrintStmt(new
                                         VarExp("v"))))));
         MyIStack<IStmt> stk3 = new MyStack<IStmt>();
-        MyIDictionary<String, Value> symtbl3 =
-                new MyDictionary<String, Value>();
+        MyIDictionary<String, Value> symtbl3 = new MyDictionary<String, Value>();
         MyIList<Value> out3 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable3 = new MyDictionary<>();
         MyIHeap<Value> heap3 = new MyHeap<>();
@@ -68,8 +63,7 @@ class Interpreter {
                                             new CompStatement(new ReadFile(new VarExp("varf"),"varc"), new CompStatement(new PrintStmt(new VarExp("varc")),
                                                     new CompStatement(new ReadFile(new VarExp("varf"),"varc"), new CompStatement(new PrintStmt(new VarExp("varc")), new CloseRFile(new VarExp("varf"))))))))));
         MyIStack<IStmt> stk4 = new MyStack<IStmt>();
-        MyIDictionary<String, Value> symtbl4 =
-                new MyDictionary<String, Value>();
+        MyIDictionary<String, Value> symtbl4 = new MyDictionary<String, Value>();
         MyIList<Value> out4 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable4 = new MyDictionary<>();
         MyIHeap<Value> heap4 = new MyHeap<>();
@@ -83,14 +77,58 @@ class Interpreter {
                                 new CompStatement(new ReadFile(new VarExp("fis"),"nr2"),new CompStatement(new IfStmt(new RelationalExp(">",new VarExp("nr1"), new VarExp("nr2")),
                                         new PrintStmt(new VarExp("nr1")), new PrintStmt(new VarExp("nr2"))), new CloseRFile(new VarExp("fis"))))))))));
         MyIStack<IStmt> stk5 = new MyStack<IStmt>();
-        MyIDictionary<String, Value> symtbl5 =
-                new MyDictionary<String, Value>();
+        MyIDictionary<String, Value> symtbl5 = new MyDictionary<String, Value>();
         MyIList<Value> out5 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable5 = new MyDictionary<>();
         MyIHeap<Value> heap5 = new MyHeap<>();
         PrgState prg5 = new PrgState(stk5, symtbl5, out5, fileTable5, heap5, ex5);
         IRepo repo5 = new Repo(prg5, "log5.txt");
         Controller ctr5 = new Controller(repo5);
+
+        // Heap allocation example
+        IStmt ex6 = new CompStatement(new VarDeclStmt("v", new RefType(new IntType())),
+                        new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(20))),
+                            new CompStatement(new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                                new CompStatement(new HeapAllocation("a", new VarExp("v")),
+                                    new CompStatement(new PrintStmt(new VarExp("v")), new PrintStmt(new VarExp("a")))))));
+        MyIStack<IStmt> stk6 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl6 = new MyDictionary<String, Value>();
+        MyIList<Value> out6 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable6 = new MyDictionary<>();
+        MyIHeap<Value> heap6 = new MyHeap<>();
+        PrgState prg6 = new PrgState(stk6, symtbl6, out6, fileTable6, heap6, ex6);
+        IRepo repo6 = new Repo(prg6, "log6.txt");
+        Controller ctr6 = new Controller(repo6);
+
+        // Heap reading example
+        IStmt ex7 = new CompStatement(new VarDeclStmt("v", new RefType(new IntType())),
+                        new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(20))),
+                                new CompStatement(new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                                        new CompStatement(new HeapAllocation("a", new VarExp("v")),
+                                                new CompStatement(new PrintStmt(new HeapReading(new VarExp("v"))), new PrintStmt(new ArithExp('+',new HeapReading(new HeapReading(new VarExp("a"))), new ValueExp(new IntValue(5)))))))));
+        MyIStack<IStmt> stk7 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl7 = new MyDictionary<String, Value>();
+        MyIList<Value> out7 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable7 = new MyDictionary<>();
+        MyIHeap<Value> heap7 = new MyHeap<>();
+        PrgState prg7 = new PrgState(stk7, symtbl7, out7, fileTable7, heap7, ex7);
+        IRepo repo7 = new Repo(prg7, "log7.txt");
+        Controller ctr7 = new Controller(repo7);
+
+        // Heap writing example
+        IStmt ex8 = new CompStatement(new VarDeclStmt("v", new RefType(new IntType())),
+                        new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(20))),
+                            new CompStatement(new PrintStmt(new HeapReading(new VarExp("v"))),
+                                    new CompStatement(new HeapWriting("v", new ValueExp(new IntValue(30))),
+                                            new PrintStmt(new ArithExp('+',new HeapReading(new VarExp("v")), new ValueExp(new IntValue(5))))))));
+        MyIStack<IStmt> stk8 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl8 = new MyDictionary<String, Value>();
+        MyIList<Value> out8 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable8 = new MyDictionary<>();
+        MyIHeap<Value> heap8 = new MyHeap<>();
+        PrgState prg8 = new PrgState(stk8, symtbl8, out8, fileTable8, heap8, ex8);
+        IRepo repo8 = new Repo(prg8, "log8.txt");
+        Controller ctr8 = new Controller(repo8);
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
@@ -99,6 +137,9 @@ class Interpreter {
         menu.addCommand(new RunExample("3", ex3.toString(), ctr3));
         menu.addCommand(new RunExample("4", ex4.toString(), ctr4));
         menu.addCommand(new RunExample("5", ex5.toString(), ctr5));
+        menu.addCommand(new RunExample("6", ex6.toString(), ctr6));
+        menu.addCommand(new RunExample("7", ex7.toString(), ctr7));
+        menu.addCommand(new RunExample("8", ex8.toString(), ctr8));
         menu.show();
     }
 }

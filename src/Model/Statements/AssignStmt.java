@@ -48,7 +48,7 @@ public class AssignStmt implements IStmt {
     public PrgState execute(PrgState state) throws MyException {
         MyIStack<IStmt> stk = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
-        MyIHeap<Value> hp = new MyHeap<>();
+        MyIHeap<Value> hp = state.getHeap();
         if (symTbl.isDefined(id)) {
             Value val = exp.eval(symTbl, hp);
             Type typId = (symTbl.lookup(id)).getType();

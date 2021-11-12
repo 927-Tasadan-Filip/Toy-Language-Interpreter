@@ -62,4 +62,9 @@ public class HeapWriting implements IStmt{
 
         return state;
     }
+
+    @Override
+    public String toString() {
+        return "wH(" + var_name + ", " + expression.toString() + ")";
+    }
 }

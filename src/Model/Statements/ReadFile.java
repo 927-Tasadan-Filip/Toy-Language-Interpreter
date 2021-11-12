@@ -52,7 +52,7 @@ public class ReadFile implements IStmt{
     public PrgState execute(PrgState state) throws MyException {
         MyIDictionary<String, Value> symTbl = state.getSymTable();
         MyIDictionary<StringValue, BufferedReader> fileTbl = state.getFileTable();
-        MyIHeap<Value> hp = new MyHeap<>();
+        MyIHeap<Value> hp = state.getHeap();
 
         if(symTbl.isDefined(var_name)) {
             Value val = symTbl.lookup(var_name);
