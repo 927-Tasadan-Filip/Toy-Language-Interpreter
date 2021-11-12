@@ -8,6 +8,16 @@ import java.util.Scanner;
 public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     private HashMap<K,V> dictionary;
 
+    @Override
+    public void setContent(HashMap<K,V> new_dict) {
+        dictionary = new_dict;
+    }
+
+    @Override
+    public HashMap<K, V> getContent() {
+        return dictionary;
+    }
+
     public MyDictionary() {
         dictionary = new HashMap<K,V>();
     }

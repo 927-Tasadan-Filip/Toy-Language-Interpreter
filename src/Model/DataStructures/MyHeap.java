@@ -3,6 +3,7 @@ package Model.DataStructures;
 import UserDefinedExceptions.MyException;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MyHeap<V> implements MyIHeap<V> {
@@ -11,6 +12,16 @@ public class MyHeap<V> implements MyIHeap<V> {
     public MyHeap() {
         dictionary = new HashMap<Integer,V>();
         first_free_key = 1;
+    }
+
+    @Override
+    public void setContent(Map<Integer,V> new_dict) {
+        dictionary = (HashMap<Integer, V>)new_dict;
+    }
+
+    @Override
+    public HashMap<Integer, V> getContent() {
+        return dictionary;
     }
 
     @Override

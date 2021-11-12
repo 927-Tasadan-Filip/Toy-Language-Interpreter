@@ -3,10 +3,11 @@ package View;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class TextMenu {
     private Map<String, Command> commands;
-    public TextMenu(){ commands=new HashMap<>(); }
+    public TextMenu(){ commands=new TreeMap<>(); }
     public void addCommand(Command c){ commands.put(c.getKey(),c);}
     private void printMenu(){
         for(Command com : commands.values()){

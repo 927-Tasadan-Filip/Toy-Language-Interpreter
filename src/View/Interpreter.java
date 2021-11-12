@@ -130,7 +130,7 @@ class Interpreter {
         IRepo repo8 = new Repo(prg8, "log8.txt");
         Controller ctr8 = new Controller(repo8);
 
-        // While statement test
+        // While statement example
         IStmt ex9 = new CompStatement(new VarDeclStmt("v", new IntType()),
                         new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(4))),
                                 new CompStatement(new WhileStmt(new RelationalExp(">", new VarExp("v"), new ValueExp(new IntValue(0))), new CompStatement(new PrintStmt(new VarExp("v")), new AssignStmt("v", new ArithExp('-', new VarExp("v"), new ValueExp(new IntValue(1)))))),
@@ -144,6 +144,38 @@ class Interpreter {
         IRepo repo9= new Repo(prg9, "log9.txt");
         Controller ctr9 = new Controller(repo9);
 
+        // Garbage collector example
+        IStmt ex10 = new CompStatement(new VarDeclStmt("v", new RefType(new IntType())),
+                        new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(20))),
+                            new CompStatement(new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                                    new CompStatement(new HeapAllocation("a", new VarExp("v")),
+                                            new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(30))), new PrintStmt(new HeapReading(new HeapReading(new VarExp("a")))))))));
+        MyIStack<IStmt> stk10 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl10 = new MyDictionary<String, Value>();
+        MyIList<Value> out10 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable10 = new MyDictionary<>();
+        MyIHeap<Value> heap10 = new MyHeap<>();
+        PrgState prg10 = new PrgState(stk10, symtbl10, out10, fileTable10, heap10, ex10);
+        IRepo repo10 = new Repo(prg10, "log10.txt");
+        Controller ctr10 = new Controller(repo10);
+
+        // Garbage collector test
+        IStmt ex11 = new CompStatement(new VarDeclStmt("v", new RefType(new IntType())),
+                new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(20))),
+                        new CompStatement(new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                                new CompStatement(new HeapAllocation("a", new VarExp("v")),
+                                        new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(30))),
+                                                new CompStatement(new PrintStmt(new HeapReading(new HeapReading(new VarExp("a")))),
+                                                        new HeapAllocation("a", new VarExp("v"))))))));
+        MyIStack<IStmt> stk11 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl11 = new MyDictionary<String, Value>();
+        MyIList<Value> out11 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable11 = new MyDictionary<>();
+        MyIHeap<Value> heap11 = new MyHeap<>();
+        PrgState prg11 = new PrgState(stk11, symtbl11, out11, fileTable11, heap11, ex11);
+        IRepo repo11 = new Repo(prg11, "log11.txt");
+        Controller ctr11 = new Controller(repo11);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", ex1.toString(), ctr1));
@@ -155,6 +187,8 @@ class Interpreter {
         menu.addCommand(new RunExample("7", ex7.toString(), ctr7));
         menu.addCommand(new RunExample("8", ex8.toString(), ctr8));
         menu.addCommand(new RunExample("9", ex9.toString(), ctr9));
+        menu.addCommand(new RunExample("10", ex10.toString(), ctr10));
+        menu.addCommand(new RunExample("11", ex11.toString(), ctr11));
         menu.show();
     }
 }
