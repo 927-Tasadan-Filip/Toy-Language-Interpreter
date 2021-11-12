@@ -1,6 +1,7 @@
 package Model.Expressions;
 
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.Types.BoolType;
 import Model.Values.BoolValue;
 import Model.Values.Value;
@@ -54,10 +55,10 @@ public class LogicExp implements Exp{
         initialiseOpMap();
     }
 
-    public Value eval(MyIDictionary<String,Value> tbl) throws MyException {
-        Value val1 = e1.eval(tbl);
+    public Value eval(MyIDictionary<String,Value> tbl, MyIHeap<Value> hp) throws MyException {
+        Value val1 = e1.eval(tbl, hp);
         if(val1.getType().equals(new BoolType())) {
-            Value val2 = e2.eval(tbl);
+            Value val2 = e2.eval(tbl, hp);
             if(val2.getType().equals(new BoolType())) {
                 BoolValue bool1 = (BoolValue) val1;
                 BoolValue bool2 = (BoolValue) val2;

@@ -29,7 +29,8 @@ class Interpreter {
                 new MyDictionary<String, Value>();
         MyIList<Value> out1 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable1 = new MyDictionary<>();
-        PrgState prg1 = new PrgState(stk1, symtbl1, out1, fileTable1, ex1);
+        MyIHeap<Value> heap1 = new MyHeap<>();
+        PrgState prg1 = new PrgState(stk1, symtbl1, out1, fileTable1, heap1, ex1);
         IRepo repo1 = new Repo(prg1, "log1.txt");
         Controller ctr1 = new Controller(repo1);
 
@@ -42,7 +43,8 @@ class Interpreter {
                 new MyDictionary<String, Value>();
         MyIList<Value> out2 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable2 = new MyDictionary<>();
-        PrgState prg2 = new PrgState(stk2, symtbl2, out2, fileTable2, ex2);
+        MyIHeap<Value> heap2 = new MyHeap<>();
+        PrgState prg2 = new PrgState(stk2, symtbl2, out2, fileTable2, heap2, ex2);
         IRepo repo2 = new Repo(prg2, "log2.txt");
         Controller ctr2 = new Controller(repo2);
 
@@ -56,7 +58,8 @@ class Interpreter {
                 new MyDictionary<String, Value>();
         MyIList<Value> out3 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable3 = new MyDictionary<>();
-        PrgState prg3 = new PrgState(stk3, symtbl3, out3, fileTable3, ex3);
+        MyIHeap<Value> heap3 = new MyHeap<>();
+        PrgState prg3 = new PrgState(stk3, symtbl3, out3, fileTable3, heap3, ex3);
         IRepo repo3 = new Repo(prg3, "log3.txt");
         Controller ctr3 = new Controller(repo3);
 
@@ -69,7 +72,8 @@ class Interpreter {
                 new MyDictionary<String, Value>();
         MyIList<Value> out4 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable4 = new MyDictionary<>();
-        PrgState prg4 = new PrgState(stk4, symtbl4, out4, fileTable4, ex4);
+        MyIHeap<Value> heap4 = new MyHeap<>();
+        PrgState prg4 = new PrgState(stk4, symtbl4, out4, fileTable4, heap4, ex4);
         IRepo repo4 = new Repo(prg4, "log4.txt");
         Controller ctr4 = new Controller(repo4);
 
@@ -83,7 +87,8 @@ class Interpreter {
                 new MyDictionary<String, Value>();
         MyIList<Value> out5 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable5 = new MyDictionary<>();
-        PrgState prg5 = new PrgState(stk5, symtbl5, out5, fileTable5, ex5);
+        MyIHeap<Value> heap5 = new MyHeap<>();
+        PrgState prg5 = new PrgState(stk5, symtbl5, out5, fileTable5, heap5, ex5);
         IRepo repo5 = new Repo(prg5, "log5.txt");
         Controller ctr5 = new Controller(repo5);
 

@@ -26,7 +26,8 @@ public class TestStatements {
 
         // VarDeclStmt test
         IStmt var_decl = new VarDeclStmt("a", new IntType());
-        PrgState crtPrgState = new PrgState(stk,symtbl,out, fileTable, var_decl);
+        MyIHeap<Value> hp = new MyHeap<>();
+        PrgState crtPrgState = new PrgState(stk,symtbl,out, fileTable, hp, var_decl);
 
 
         try {

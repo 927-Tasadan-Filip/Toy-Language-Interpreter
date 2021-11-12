@@ -1,9 +1,6 @@
 package Test.Model.Expressions;
 
-import Model.DataStructures.MyDictionary;
-import Model.DataStructures.MyIDictionary;
-import Model.DataStructures.MyIStack;
-import Model.DataStructures.MyStack;
+import Model.DataStructures.*;
 import Model.Expressions.*;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
@@ -13,11 +10,11 @@ import UserDefinedExceptions.MyException;
 public class TestExpressions {
     public static void main(String[] args) {
         MyIDictionary<String, Value> dict = new MyDictionary<String, Value>();
-
+        MyIHeap<Value> hp = new MyHeap<>();
         Value v1 = new IntValue(1);
         Exp ve1 = new ValueExp(v1);
         try {
-            assert (((IntValue)(ve1.eval(dict))).getVal() == 1);
+            assert (((IntValue)(ve1.eval(dict, hp))).getVal() == 1);
         }
         catch (MyException exc) {
             assert false;
@@ -26,7 +23,7 @@ public class TestExpressions {
         Exp ve2 = new ValueExp(v2);
         Exp ar3 = new ArithExp('+',ve1, ve2);
         try {
-            assert ((((IntValue)(ar3.eval(dict))).getVal()) == 3);
+            assert ((((IntValue)(ar3.eval(dict, hp))).getVal()) == 3);
         }
         catch (MyException exc) {
             assert false;
@@ -38,7 +35,7 @@ public class TestExpressions {
 
         Exp eb5 = new LogicExp(vb3, vb4, "and");
         try {
-            assert (!(((BoolValue) (eb5.eval(dict))).getVal()));
+            assert (!(((BoolValue) (eb5.eval(dict, hp))).getVal()));
         }
         catch (MyException exc) {
             assert false;
@@ -46,7 +43,7 @@ public class TestExpressions {
 
         Exp eb6 = new LogicExp(vb3, vb4, "or");
         try {
-            assert (((BoolValue)(eb6.eval(dict))).getVal());
+            assert (((BoolValue)(eb6.eval(dict, hp))).getVal());
         }
         catch (MyException exc) {
             assert false;
@@ -56,7 +53,7 @@ public class TestExpressions {
         dict.update("b", new IntValue(25));
         Exp ev7 = new VarExp("a");
         try {
-            assert (((IntValue)(ev7.eval(dict))).getVal() == 12);
+            assert (((IntValue)(ev7.eval(dict, hp))).getVal() == 12);
         }
         catch (MyException exc) {
             assert false;
@@ -64,7 +61,7 @@ public class TestExpressions {
 
         Exp ev8 = new VarExp("b");
         try {
-            assert (((IntValue)(ev8.eval(dict))).getVal() == 25);
+            assert (((IntValue)(ev8.eval(dict, hp))).getVal() == 25);
         }
         catch (MyException exc) {
             assert false;
@@ -72,7 +69,7 @@ public class TestExpressions {
 
         Exp ev9 = new VarExp("c");
         try {
-            ev9.eval(dict);
+            ev9.eval(dict, hp);
             assert false;
         }
         catch (MyException exc) {

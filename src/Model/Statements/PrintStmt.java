@@ -1,6 +1,8 @@
 package Model.Statements;
 
+import Model.DataStructures.MyHeap;
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.DataStructures.MyIList;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
@@ -31,7 +33,8 @@ public class PrintStmt implements IStmt{
     public PrgState execute(PrgState state) throws MyException {
         MyIList<Value> out = state.getOut();
         MyIDictionary<String,Value> symTbl= state.getSymTable();
-        Value evaluated_exp = exp.eval(symTbl);
+        MyIHeap<Value> hp = new MyHeap<>();
+        Value evaluated_exp = exp.eval(symTbl, hp);
         out.append(evaluated_exp);
         return state;
     }

@@ -1,6 +1,7 @@
 package Model.Expressions;
 
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
@@ -21,7 +22,7 @@ public class ValueExp implements Exp{
         this.e = e;
     }
 
-    public Value eval(MyIDictionary<String,Value> tbl) throws MyException {
+    public Value eval(MyIDictionary<String,Value> tbl, MyIHeap<Value> hp) throws MyException {
         return e;
     }
 

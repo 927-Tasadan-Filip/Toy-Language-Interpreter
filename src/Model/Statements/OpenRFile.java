@@ -1,6 +1,8 @@
 package Model.Statements;
 
+import Model.DataStructures.MyHeap;
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.StringType;
@@ -39,7 +41,9 @@ public class OpenRFile implements IStmt{
     public PrgState execute(PrgState state) throws MyException {
         MyIDictionary<String, Value> symTbl = state.getSymTable();
         MyIDictionary<StringValue, BufferedReader> fileTbl = state.getFileTable();
-        Value val = exp.eval(symTbl);
+        MyIHeap<Value> hp = new MyHeap<>();
+
+        Value val = exp.eval(symTbl, hp);
         if(val.getType().equals(new StringType())) {
             StringValue string_val = (StringValue) val;
             if(fileTbl.isDefined(string_val)) {

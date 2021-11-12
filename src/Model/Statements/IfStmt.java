@@ -1,6 +1,8 @@
 package Model.Statements;
 
+import Model.DataStructures.MyHeap;
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
@@ -49,8 +51,8 @@ public class IfStmt implements IStmt{
     public PrgState execute(PrgState state) throws MyException {
         MyIStack<IStmt> stk = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
-
-        Value cond = exp.eval(symTbl);
+        MyIHeap<Value> hp = new MyHeap<>();
+        Value cond = exp.eval(symTbl, hp);
         if(cond.getType().equals(new BoolType())) {
             BoolValue v1 = (BoolValue) cond;
             if(v1.getVal()) {

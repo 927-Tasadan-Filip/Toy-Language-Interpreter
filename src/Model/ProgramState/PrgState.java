@@ -1,6 +1,7 @@
 package Model.ProgramState;
 
 import Model.DataStructures.MyIDictionary;
+import Model.DataStructures.MyIHeap;
 import Model.DataStructures.MyIList;
 import Model.DataStructures.MyIStack;
 import Model.Statements.IStmt;
@@ -14,6 +15,8 @@ public class PrgState{
     private MyIDictionary<String, Value> symTable;
     private MyIList<Value> out;
     private  MyIDictionary<StringValue, BufferedReader> fileTable;
+    private MyIHeap<Value> heap;
+
     private IStmt originalProgram;
 
     public MyIStack<IStmt> getExeStack() {
@@ -44,6 +47,14 @@ public class PrgState{
         return fileTable;
     }
 
+    public MyIHeap<Value> getHeap() {
+        return heap;
+    }
+
+    public void setHeap(MyIHeap<Value> heap) {
+        this.heap = heap;
+    }
+
     public void setFileTable(MyIDictionary<StringValue, BufferedReader> fileTable) {
         this.fileTable = fileTable;
     }
@@ -57,11 +68,12 @@ public class PrgState{
     }
 
     public PrgState() {}
-    public PrgState(MyIStack<IStmt> stk, MyIDictionary<String,Value> symtbl, MyIList<Value> ot, MyIDictionary<StringValue, BufferedReader> filetbl, IStmt prg){
+    public PrgState(MyIStack<IStmt> stk, MyIDictionary<String,Value> symtbl, MyIList<Value> ot, MyIDictionary<StringValue, BufferedReader> filetbl, MyIHeap<Value> hp, IStmt prg){
         exeStack=stk;
         symTable=symtbl;
         out = ot;
         fileTable = filetbl;
+        heap = hp;
         // TODO
         // originalProgram=deepCopy(prg);//recreate the entire original prg
         stk.push(prg);
@@ -73,8 +85,8 @@ public class PrgState{
         current_state_string += "Execution stack:\n" + exeStack.toString();
         current_state_string += "Symbol table:\n" + symTable.toString();
         current_state_string += "Out:\n" + out.toString();
-        current_state_string += "FileTable:\n " + fileTable.keysToString();
-
+        current_state_string += "FileTable:\n" + fileTable.keysToString();
+        current_state_string += "Heap:\n" + heap.toString();
         return current_state_string;
     }
 

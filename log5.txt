@@ -1,0 +1,192 @@
+Execution stack:
+(string fis, (fis="test5.txt", (OpenRFile(fis), (int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))))))))
+Symbol table:
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+string fis
+(fis="test5.txt", (OpenRFile(fis), (int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))))))
+Symbol table:
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+(fis="test5.txt", (OpenRFile(fis), (int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))))))
+Symbol table:
+fis->""
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+fis="test5.txt"
+(OpenRFile(fis), (int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))))))
+Symbol table:
+fis->""
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+(OpenRFile(fis), (int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))))))
+Symbol table:
+fis->"test5.txt"
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+OpenRFile(fis)
+(int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))))
+Symbol table:
+fis->"test5.txt"
+Out:
+FileTable:
+Heap:
+
+Execution stack:
+(int nr1, (int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))))
+Symbol table:
+fis->"test5.txt"
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+int nr1
+(int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))))
+Symbol table:
+fis->"test5.txt"
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+(int nr2, (ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))))
+Symbol table:
+fis->"test5.txt"
+nr1->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+int nr2
+(ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))
+Symbol table:
+fis->"test5.txt"
+nr1->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+(ReadFile(fis, nr1), (ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))))
+Symbol table:
+fis->"test5.txt"
+nr1->0
+nr2->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+ReadFile(fis, nr1)
+(ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))
+Symbol table:
+fis->"test5.txt"
+nr1->0
+nr2->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+(ReadFile(fis, nr2), ((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis)))
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+ReadFile(fis, nr2)
+((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->0
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+((IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2))), CloseRFile(fis))
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->26
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+(IF(nr1 > nr2) THEN(print(nr1))ELSE(print(nr2)))
+CloseRFile(fis)
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->26
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+print(nr2)
+CloseRFile(fis)
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->26
+Out:
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+CloseRFile(fis)
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->26
+Out:
+26
+FileTable:
+"test5.txt"
+Heap:
+
+Execution stack:
+Symbol table:
+fis->"test5.txt"
+nr1->23
+nr2->26
+Out:
+26
+FileTable:
+Heap:
+
