@@ -69,4 +69,8 @@ public class IfStmt implements IStmt{
         return state;
     }
 
+    @Override
+    public IStmt deepCopy() {
+        return new IfStmt(this.exp, this.thenS.deepCopy(), this.elseS.deepCopy());
+    }
 }

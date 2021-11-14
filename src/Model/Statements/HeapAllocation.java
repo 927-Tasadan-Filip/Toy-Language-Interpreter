@@ -65,4 +65,9 @@ public class HeapAllocation implements IStmt{
 
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new HeapAllocation(this.var_name, this.expression);
+    }
 }

@@ -64,4 +64,9 @@ public class CloseRFile implements IStmt{
 
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new CloseRFile(this.exp);
+    }
 }

@@ -62,4 +62,9 @@ public class OpenRFile implements IStmt{
         }
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new OpenRFile(this.exp);
+    }
 }

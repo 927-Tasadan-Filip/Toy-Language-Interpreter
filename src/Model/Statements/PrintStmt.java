@@ -38,4 +38,9 @@ public class PrintStmt implements IStmt{
         out.append(evaluated_exp);
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new PrintStmt(this.exp);
+    }
 }

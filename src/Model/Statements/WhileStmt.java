@@ -36,6 +36,11 @@ public class WhileStmt implements IStmt{
     }
 
     @Override
+    public String toString() {
+        return "while(" + expression.toString() + ") " + stmt.toString();
+    }
+
+    @Override
     public PrgState execute(PrgState state) throws MyException {
         MyIStack<IStmt> exeStack = state.getExeStack();
         MyIDictionary<String, Value> symTbl = state.getSymTable();
@@ -56,7 +61,7 @@ public class WhileStmt implements IStmt{
     }
 
     @Override
-    public String toString() {
-        return "while(" + expression.toString() + ") " + stmt.toString();
+    public IStmt deepCopy() {
+        return new WhileStmt(this.expression, this.stmt.deepCopy());
     }
 }

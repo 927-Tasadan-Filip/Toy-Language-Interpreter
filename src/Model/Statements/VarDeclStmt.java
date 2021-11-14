@@ -52,4 +52,9 @@ public class VarDeclStmt implements IStmt{
         }
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new VarDeclStmt(this.name, this.typ);
+    }
 }

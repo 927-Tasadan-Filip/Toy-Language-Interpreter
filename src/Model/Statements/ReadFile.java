@@ -92,4 +92,9 @@ public class ReadFile implements IStmt{
 
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new ReadFile(this.exp, this.var_name);
+    }
 }

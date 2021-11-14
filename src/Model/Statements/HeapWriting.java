@@ -67,4 +67,9 @@ public class HeapWriting implements IStmt{
     public String toString() {
         return "wH(" + var_name + ", " + expression.toString() + ")";
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new HeapWriting(this.var_name, this.expression);
+    }
 }

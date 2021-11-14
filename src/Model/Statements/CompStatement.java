@@ -42,5 +42,10 @@ public class CompStatement implements IStmt {
         stk.push(first);
         return state;
     }
+
+    @Override
+    public IStmt deepCopy() {
+        return new CompStatement(this.first.deepCopy(), this.snd.deepCopy());
+    }
 }
 

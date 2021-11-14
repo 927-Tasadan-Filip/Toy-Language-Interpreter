@@ -87,5 +87,6 @@ public class Controller {
                     prg.getHeap().getContent()));
             program_repo.logPrgStateExec();
         }
+//        System.out.println(prg.getOriginalProgram().toString());
     }
 }

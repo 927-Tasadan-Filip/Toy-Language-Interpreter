@@ -74,8 +74,7 @@ public class PrgState{
         out = ot;
         fileTable = filetbl;
         heap = hp;
-        // TODO
-        // originalProgram=deepCopy(prg);//recreate the entire original prg
+        originalProgram = prg.deepCopy();
         stk.push(prg);
     }
 
