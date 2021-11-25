@@ -53,11 +53,12 @@ public class WhileStmt implements IStmt{
                 exeStack.push(this);
                 exeStack.push(stmt);
             }
+
         } else {
             throw  new MyException("While conditional expression is not a boolean");
         }
 
-        return state;
+        return null;
     }
 
     @Override

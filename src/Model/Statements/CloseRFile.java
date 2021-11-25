@@ -62,7 +62,7 @@ public class CloseRFile implements IStmt{
             throw new MyException("OpenRFile exp is not a StringType");
         }
 
-        return state;
+        return null;
     }
 
     @Override

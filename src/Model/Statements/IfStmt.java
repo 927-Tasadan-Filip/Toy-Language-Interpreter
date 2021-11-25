@@ -66,7 +66,7 @@ public class IfStmt implements IStmt{
             throw new MyException("If conditional expression is not a boolean");
         }
 
-        return state;
+        return null;
     }
 
     @Override

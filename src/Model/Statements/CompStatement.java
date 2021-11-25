@@ -40,7 +40,7 @@ public class CompStatement implements IStmt {
         MyIStack<IStmt> stk=state.getExeStack();
         stk.push(snd);
         stk.push(first);
-        return state;
+        return null;
     }
 
     @Override

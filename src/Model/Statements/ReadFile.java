@@ -90,7 +90,7 @@ public class ReadFile implements IStmt{
             throw new MyException("there is no defined variable with this var_name");
         }
 
-        return state;
+        return null;
     }
 
     @Override

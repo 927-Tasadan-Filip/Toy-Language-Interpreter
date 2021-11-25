@@ -60,7 +60,7 @@ public class HeapWriting implements IStmt{
             throw new MyException("The var_name \"" + var_name + "\" is not defined in the symbol table");
         }
 
-        return state;
+        return null;
     }
 
     @Override

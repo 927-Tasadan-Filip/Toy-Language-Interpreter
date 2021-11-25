@@ -36,7 +36,7 @@ public class PrintStmt implements IStmt{
         MyIHeap<Value> hp = state.getHeap();
         Value evaluated_exp = exp.eval(symTbl, hp);
         out.append(evaluated_exp);
-        return state;
+        return null;
     }
 
     @Override

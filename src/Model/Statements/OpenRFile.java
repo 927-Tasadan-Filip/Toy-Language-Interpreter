@@ -60,7 +60,7 @@ public class OpenRFile implements IStmt{
         } else {
             throw new MyException("OpenRFile exp is not a StringType");
         }
-        return state;
+        return null;
     }
 
     @Override
