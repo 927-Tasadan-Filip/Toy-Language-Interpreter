@@ -166,7 +166,7 @@ class Interpreter {
                                 new CompStatement(new HeapAllocation("a", new VarExp("v")),
                                         new CompStatement(new HeapAllocation("v", new ValueExp(new IntValue(30))),
                                                 new CompStatement(new PrintStmt(new HeapReading(new HeapReading(new VarExp("a")))),
-                                                        new HeapAllocation("a", new VarExp("v"))))))));
+                                                        new CompStatement(new HeapAllocation("a", new VarExp("v")), new HeapWriting("v", new ValueExp(new IntValue(50))))))))));
         MyIStack<IStmt> stk11 = new MyStack<IStmt>();
         MyIDictionary<String, Value> symtbl11 = new MyDictionary<String, Value>();
         MyIList<Value> out11 = new MyList<Value>();
@@ -175,6 +175,24 @@ class Interpreter {
         PrgState prg11 = new PrgState(stk11, symtbl11, out11, fileTable11, heap11, ex11);
         IRepo repo11 = new Repo(prg11, "log11.txt");
         Controller ctr11 = new Controller(repo11);
+
+        IStmt ex12 = new CompStatement(new VarDeclStmt("v", new IntType()),
+                        new CompStatement(new VarDeclStmt("a", new RefType(new IntType())),
+                            new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(10))),
+                                new CompStatement(new HeapAllocation("a", new ValueExp(new IntValue(22))),
+                                    new CompStatement(new forkStmt(
+                                                            new CompStatement(new HeapWriting("a", new ValueExp(new IntValue(30))),
+                                                                    new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(32))),
+                                                                            new CompStatement(new PrintStmt(new VarExp("v")), new PrintStmt(new HeapReading(new VarExp("a"))))))),
+                                    new CompStatement(new PrintStmt(new VarExp("v")), new PrintStmt(new HeapReading(new VarExp("a")))))))));
+        MyIStack<IStmt> stk12 = new MyStack<IStmt>();
+        MyIDictionary<String, Value> symtbl12 = new MyDictionary<String, Value>();
+        MyIList<Value> out12 = new MyList<Value>();
+        MyIDictionary<StringValue, BufferedReader> fileTable12 = new MyDictionary<>();
+        MyIHeap<Value> heap12 = new MyHeap<>();
+        PrgState prg12 = new PrgState(stk12, symtbl12, out12, fileTable12, heap12, ex12);
+        IRepo repo12 = new Repo(prg12, "log12.txt");
+        Controller ctr12 = new Controller(repo12);
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
@@ -189,6 +207,7 @@ class Interpreter {
         menu.addCommand(new RunExample("9", ex9.toString(), ctr9));
         menu.addCommand(new RunExample("10", ex10.toString(), ctr10));
         menu.addCommand(new RunExample("11", ex11.toString(), ctr11));
+        menu.addCommand(new RunExample("12", ex12.toString(), ctr12));
         menu.show();
     }
 }

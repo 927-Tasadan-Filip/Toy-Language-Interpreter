@@ -91,24 +91,24 @@ public class Controller {
     }
 
     public void oneStepForAllPrg(List<PrgState> prgList) {
+
         prgList.forEach(prg-> {try {program_repo.logPrgStateExec(prg);}
                             catch (MyException e) {}});
 
         List<Callable<PrgState>> callList = prgList.stream()
-                .map((PrgState p) -> (Callable<PrgState>)(() -> {return p.oneStep();}))
+                .map((PrgState p) -> (Callable<PrgState>)(() -> p.oneStep()))
                 .collect(Collectors.toList());
 
         try {
             List<PrgState> newPrgList = executor.invokeAll(callList).stream()
                     . map(future -> { try { return future.get();}
-                        catch(Exception e) {return null;} }).filter(p -> p!=null)
+                        catch(Exception e) {System.out.println(e.toString()); return null;} }).filter(p -> p!=null)
                     .collect(Collectors.toList());
             prgList.addAll(newPrgList);
             prgList.forEach(prg-> {try {program_repo.logPrgStateExec(prg);}
                     catch (MyException e) {}});
             program_repo.setPrgList(prgList);
         } catch (InterruptedException e) {}
-
 
     }
 
