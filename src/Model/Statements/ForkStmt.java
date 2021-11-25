@@ -8,7 +8,7 @@ import UserDefinedExceptions.MyException;
 
 import java.io.BufferedReader;
 
-public class forkStmt implements IStmt{
+public class ForkStmt implements IStmt{
     private IStmt stmt;
 
     public IStmt getStmt() {
@@ -19,7 +19,7 @@ public class forkStmt implements IStmt{
         this.stmt = stmt;
     }
 
-    public forkStmt(IStmt stmt) {
+    public ForkStmt(IStmt stmt) {
         this.stmt = stmt;
     }
 
@@ -35,7 +35,12 @@ public class forkStmt implements IStmt{
     }
 
     @Override
+    public String toString() {
+        return "fork(" + stmt.toString() + ")";
+    }
+
+    @Override
     public IStmt deepCopy() {
-        return new forkStmt(stmt.deepCopy());
+        return new ForkStmt(stmt.deepCopy());
     }
 }

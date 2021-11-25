@@ -26,8 +26,7 @@ public class Repo implements IRepo {
     }
 
     public Repo(PrgState state, String logFilePath) {
-        this();
-        prg_list.add(state);
+        this(state);
         this.logFilePath = logFilePath;
     }
 

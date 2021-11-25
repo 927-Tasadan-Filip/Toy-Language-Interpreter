@@ -180,7 +180,7 @@ class Interpreter {
                         new CompStatement(new VarDeclStmt("a", new RefType(new IntType())),
                             new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(10))),
                                 new CompStatement(new HeapAllocation("a", new ValueExp(new IntValue(22))),
-                                    new CompStatement(new forkStmt(
+                                    new CompStatement(new ForkStmt(
                                                             new CompStatement(new HeapWriting("a", new ValueExp(new IntValue(30))),
                                                                     new CompStatement(new AssignStmt("v", new ValueExp(new IntValue(32))),
                                                                             new CompStatement(new PrintStmt(new VarExp("v")), new PrintStmt(new HeapReading(new VarExp("a"))))))),
