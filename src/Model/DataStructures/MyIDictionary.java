@@ -14,5 +14,6 @@ public interface MyIDictionary<K, V> {
     V remove(K key);
     String toString();
     String keysToString();
+    MyIDictionary<K, V> clone();
 
 }

@@ -57,4 +57,11 @@ public class VarDeclStmt implements IStmt{
     public IStmt deepCopy() {
         return new VarDeclStmt(this.name, this.typ);
     }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        typeEnv.update(name, typ);
+        return typeEnv;
+    }
 }
+

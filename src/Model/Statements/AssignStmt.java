@@ -55,7 +55,7 @@ public class AssignStmt implements IStmt {
             if ((val.getType()).equals(typId)) {
                 symTbl.update(id, val);
             }
-            else throw new MyException("declared type of variable" + id + " and type of the assigned expression do not match");
+            else throw new MyException("the type of variable" + id + " and type of the assigned expression do not match");
         }
 
         else throw new MyException("the used variable" + id + " was not declared before");
@@ -66,5 +66,14 @@ public class AssignStmt implements IStmt {
     @Override
     public IStmt deepCopy() {
         return new AssignStmt(this.id, this.exp);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type_var = typeEnv.lookup(id);
+        Type type_exp = exp.typeCheck(typeEnv);
+        if(type_var.equals(type_exp)) {
+            return typeEnv;
+        } else throw new MyException("the type of variable" + id + " and type of the assigned expression do not match");
     }
 }

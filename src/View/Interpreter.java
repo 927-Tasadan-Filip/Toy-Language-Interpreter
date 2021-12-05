@@ -5,16 +5,14 @@ import Model.DataStructures.*;
 import Model.Expressions.*;
 import Model.ProgramState.PrgState;
 import Model.Statements.*;
-import Model.Types.BoolType;
-import Model.Types.IntType;
-import Model.Types.RefType;
-import Model.Types.StringType;
+import Model.Types.*;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
 import Model.Values.StringValue;
 import Model.Values.Value;
 import Repository.IRepo;
 import Repository.Repo;
+import UserDefinedExceptions.MyException;
 
 import java.io.BufferedReader;
 
@@ -27,6 +25,12 @@ class Interpreter {
         MyIList<Value> out1 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable1 = new MyDictionary<>();
         MyIHeap<Value> heap1 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv1 = new MyDictionary<>();
+        try {
+            ex1.typeCheck(typeEnv1);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg1 = new PrgState(stk1, symtbl1, out1, fileTable1, heap1, ex1);
         IRepo repo1 = new Repo(prg1, "log1.txt");
         Controller ctr1 = new Controller(repo1);
@@ -40,6 +44,12 @@ class Interpreter {
         MyIList<Value> out2 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable2 = new MyDictionary<>();
         MyIHeap<Value> heap2 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv2 = new MyDictionary<>();
+        try {
+            ex2.typeCheck(typeEnv2);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg2 = new PrgState(stk2, symtbl2, out2, fileTable2, heap2, ex2);
         IRepo repo2 = new Repo(prg2, "log2.txt");
         Controller ctr2 = new Controller(repo2);
@@ -54,6 +64,12 @@ class Interpreter {
         MyIList<Value> out3 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable3 = new MyDictionary<>();
         MyIHeap<Value> heap3 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv3 = new MyDictionary<>();
+        try {
+            ex3.typeCheck(typeEnv3);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg3 = new PrgState(stk3, symtbl3, out3, fileTable3, heap3, ex3);
         IRepo repo3 = new Repo(prg3, "log3.txt");
         Controller ctr3 = new Controller(repo3);
@@ -67,6 +83,12 @@ class Interpreter {
         MyIList<Value> out4 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable4 = new MyDictionary<>();
         MyIHeap<Value> heap4 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv4 = new MyDictionary<>();
+        try {
+            ex4.typeCheck(typeEnv4);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg4 = new PrgState(stk4, symtbl4, out4, fileTable4, heap4, ex4);
         IRepo repo4 = new Repo(prg4, "log4.txt");
         Controller ctr4 = new Controller(repo4);
@@ -81,6 +103,12 @@ class Interpreter {
         MyIList<Value> out5 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable5 = new MyDictionary<>();
         MyIHeap<Value> heap5 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv5 = new MyDictionary<>();
+        try {
+            ex5.typeCheck(typeEnv5);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg5 = new PrgState(stk5, symtbl5, out5, fileTable5, heap5, ex5);
         IRepo repo5 = new Repo(prg5, "log5.txt");
         Controller ctr5 = new Controller(repo5);
@@ -96,6 +124,12 @@ class Interpreter {
         MyIList<Value> out6 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable6 = new MyDictionary<>();
         MyIHeap<Value> heap6 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv6 = new MyDictionary<>();
+        try {
+            ex6.typeCheck(typeEnv6);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg6 = new PrgState(stk6, symtbl6, out6, fileTable6, heap6, ex6);
         IRepo repo6 = new Repo(prg6, "log6.txt");
         Controller ctr6 = new Controller(repo6);
@@ -111,6 +145,12 @@ class Interpreter {
         MyIList<Value> out7 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable7 = new MyDictionary<>();
         MyIHeap<Value> heap7 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv7 = new MyDictionary<>();
+        try {
+            ex7.typeCheck(typeEnv7);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg7 = new PrgState(stk7, symtbl7, out7, fileTable7, heap7, ex7);
         IRepo repo7 = new Repo(prg7, "log7.txt");
         Controller ctr7 = new Controller(repo7);
@@ -126,6 +166,12 @@ class Interpreter {
         MyIList<Value> out8 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable8 = new MyDictionary<>();
         MyIHeap<Value> heap8 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv8 = new MyDictionary<>();
+        try {
+            ex8.typeCheck(typeEnv8);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg8 = new PrgState(stk8, symtbl8, out8, fileTable8, heap8, ex8);
         IRepo repo8 = new Repo(prg8, "log8.txt");
         Controller ctr8 = new Controller(repo8);
@@ -140,6 +186,12 @@ class Interpreter {
         MyIList<Value> out9 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable9 = new MyDictionary<>();
         MyIHeap<Value> heap9 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv9 = new MyDictionary<>();
+        try {
+            ex9.typeCheck(typeEnv9);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg9 = new PrgState(stk9, symtbl9, out9, fileTable9, heap9, ex9);
         IRepo repo9= new Repo(prg9, "log9.txt");
         Controller ctr9 = new Controller(repo9);
@@ -155,6 +207,12 @@ class Interpreter {
         MyIList<Value> out10 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable10 = new MyDictionary<>();
         MyIHeap<Value> heap10 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv10 = new MyDictionary<>();
+        try {
+            ex10.typeCheck(typeEnv10);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg10 = new PrgState(stk10, symtbl10, out10, fileTable10, heap10, ex10);
         IRepo repo10 = new Repo(prg10, "log10.txt");
         Controller ctr10 = new Controller(repo10);
@@ -172,6 +230,12 @@ class Interpreter {
         MyIList<Value> out11 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable11 = new MyDictionary<>();
         MyIHeap<Value> heap11 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv11 = new MyDictionary<>();
+        try {
+            ex11.typeCheck(typeEnv11);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg11 = new PrgState(stk11, symtbl11, out11, fileTable11, heap11, ex11);
         IRepo repo11 = new Repo(prg11, "log11.txt");
         Controller ctr11 = new Controller(repo11);
@@ -190,6 +254,12 @@ class Interpreter {
         MyIList<Value> out12 = new MyList<Value>();
         MyIDictionary<StringValue, BufferedReader> fileTable12 = new MyDictionary<>();
         MyIHeap<Value> heap12 = new MyHeap<>();
+        MyIDictionary<String, Type> typeEnv12 = new MyDictionary<>();
+        try {
+            ex12.typeCheck(typeEnv12);
+        } catch (MyException exception) {
+            System.out.println("Type check exception occurred: " + exception.toString());
+        }
         PrgState prg12 = new PrgState(stk12, symtbl12, out12, fileTable12, heap12, ex12);
         IRepo repo12 = new Repo(prg12, "log12.txt");
         Controller ctr12 = new Controller(repo12);

@@ -2,6 +2,7 @@ package Model.Statements;
 
 import Model.DataStructures.*;
 import Model.ProgramState.PrgState;
+import Model.Types.Type;
 import Model.Values.StringValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -42,5 +43,11 @@ public class ForkStmt implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new ForkStmt(stmt.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        stmt.typeCheck(typeEnv);
+        return typeEnv;
     }
 }

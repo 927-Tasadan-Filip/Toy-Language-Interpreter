@@ -6,6 +6,7 @@ import Model.DataStructures.MyIHeap;
 import Model.DataStructures.MyIList;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
+import Model.Types.Type;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
 
@@ -42,5 +43,11 @@ public class PrintStmt implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new PrintStmt(this.exp);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        exp.typeCheck(typeEnv);
+        return typeEnv;
     }
 }

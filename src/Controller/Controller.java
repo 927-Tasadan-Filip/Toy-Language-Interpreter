@@ -102,7 +102,7 @@ public class Controller {
         try {
             List<PrgState> newPrgList = executor.invokeAll(callList).stream()
                     . map(future -> { try { return future.get();}
-                        catch(Exception e) {System.out.println(e.toString()); return null;} }).filter(p -> p!=null)
+                        catch(Exception e) {System.out.println("Exception occurred: " + e.toString()); return null;} }).filter(p -> p!=null)
                     .collect(Collectors.toList());
             prgList.addAll(newPrgList);
             prgList.forEach(prg-> {try {program_repo.logPrgStateExec(prg);}

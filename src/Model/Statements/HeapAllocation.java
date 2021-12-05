@@ -70,4 +70,13 @@ public class HeapAllocation implements IStmt{
     public IStmt deepCopy() {
         return new HeapAllocation(this.var_name, this.expression);
     }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type var_type = typeEnv.lookup(var_name);
+        Type exp_type = expression.typeCheck(typeEnv);
+        if (var_type.equals(new RefType(exp_type)))
+            return typeEnv;
+        else throw new MyException("new stmt: right hand side and left hand side have different types ");
+    }
 }

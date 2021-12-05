@@ -8,6 +8,7 @@ import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.IntType;
 import Model.Types.StringType;
+import Model.Types.Type;
 import Model.Values.IntValue;
 import Model.Values.StringValue;
 import Model.Values.Value;
@@ -96,5 +97,17 @@ public class ReadFile implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new ReadFile(this.exp, this.var_name);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type var_type = typeEnv.lookup(var_name);
+        Type exp_type = exp.typeCheck(typeEnv);
+
+        if(exp_type.equals(new StringType())) {
+            if(var_type.equals(new IntType())) {
+                return typeEnv;
+            } throw new MyException("the defined variable with this var_name is not int type");
+        } else throw new MyException("the exp is not string type");
     }
 }

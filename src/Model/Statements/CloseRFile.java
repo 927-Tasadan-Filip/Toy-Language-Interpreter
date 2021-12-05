@@ -6,6 +6,7 @@ import Model.DataStructures.MyIHeap;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.StringType;
+import Model.Types.Type;
 import Model.Values.StringValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -59,7 +60,7 @@ public class CloseRFile implements IStmt{
             }
 
         } else {
-            throw new MyException("OpenRFile exp is not a StringType");
+            throw new MyException("CloseRFile exp is not a StringType");
         }
 
         return null;
@@ -68,5 +69,13 @@ public class CloseRFile implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new CloseRFile(this.exp);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type exp_type = exp.typeCheck(typeEnv);
+        if(exp_type.equals(new StringType())) {
+            return typeEnv;
+        } else throw new MyException("CloseRFile exp is not a StringType");
     }
 }

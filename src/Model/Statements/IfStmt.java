@@ -7,6 +7,7 @@ import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.BoolType;
+import Model.Types.Type;
 import Model.Values.BoolValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -62,9 +63,8 @@ public class IfStmt implements IStmt{
                 stk.push(elseS);
             }
         }
-        else {
-            throw new MyException("If conditional expression is not a boolean");
-        }
+        else throw new MyException("If conditional expression is not a boolean");
+
 
         return null;
     }
@@ -72,5 +72,15 @@ public class IfStmt implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new IfStmt(this.exp, this.thenS.deepCopy(), this.elseS.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type_exp = exp.typeCheck(typeEnv);
+        if(type_exp.equals(new BoolType())) {
+            thenS.typeCheck(typeEnv.clone());
+            elseS.typeCheck(typeEnv.clone());
+            return typeEnv;
+        } else throw new MyException("If conditional expression is not a boolean");
     }
 }

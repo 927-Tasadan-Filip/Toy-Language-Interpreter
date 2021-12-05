@@ -5,6 +5,7 @@ import Model.DataStructures.MyIHeap;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.RefType;
+import Model.Types.Type;
 import Model.Values.RefValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -71,5 +72,14 @@ public class HeapWriting implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new HeapWriting(this.var_name, this.expression);
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type var_type = typeEnv.lookup(var_name);
+        Type exp_type = expression.typeCheck(typeEnv);
+        if(var_type.equals(new RefType(exp_type))) {
+            return typeEnv;
+        } else throw new MyException("hW stmt: right hand side and left hand side have different types ");
     }
 }

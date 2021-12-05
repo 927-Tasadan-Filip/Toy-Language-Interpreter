@@ -77,4 +77,16 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
         return dictionary_string;
     }
 
+    @Override
+    public synchronized MyIDictionary<K, V> clone() {
+        MyIDictionary<K, V> clone_dict = new MyDictionary<>();
+
+        for(Map.Entry<K,V> entry : dictionary.entrySet()) {
+            K key = entry.getKey();
+            V val = entry.getValue();
+            clone_dict.update(key, val);
+        }
+
+        return clone_dict;
+    }
 }

@@ -6,6 +6,7 @@ import Model.DataStructures.MyIStack;
 import Model.Expressions.Exp;
 import Model.ProgramState.PrgState;
 import Model.Types.BoolType;
+import Model.Types.Type;
 import Model.Values.BoolValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -54,9 +55,7 @@ public class WhileStmt implements IStmt{
                 exeStack.push(stmt);
             }
 
-        } else {
-            throw  new MyException("While conditional expression is not a boolean");
-        }
+        } else throw  new MyException("While conditional expression is not a boolean");
 
         return null;
     }
@@ -64,5 +63,14 @@ public class WhileStmt implements IStmt{
     @Override
     public IStmt deepCopy() {
         return new WhileStmt(this.expression, this.stmt.deepCopy());
+    }
+
+    @Override
+    public MyIDictionary<String, Type> typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type exp_type = expression.typeCheck(typeEnv);
+        if(exp_type.equals(new BoolType())) {
+            stmt.typeCheck(typeEnv.clone());
+            return typeEnv;
+        } else throw  new MyException("While conditional expression is not a boolean");
     }
 }
