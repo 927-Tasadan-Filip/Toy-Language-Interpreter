@@ -3,6 +3,7 @@ package Model.Expressions;
 import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIHeap;
 import Model.Types.IntType;
+import Model.Types.Type;
 import Model.Values.IntValue;
 import Model.Values.Value;
 import UserDefinedExceptions.MyException;
@@ -82,14 +83,23 @@ public class ArithExp implements Exp{
                     default:
                         throw new MyException("invalid arithmetic operator");
                 }
-            }
-            else
-                throw new MyException("second operand is not an integer");
-        }
-        else
-            throw new MyException("first operand is not an integer");
+            } else throw new MyException("second operand is not an integer");
+        } else throw new MyException("first operand is not an integer");
     }
 
+    @Override
+    public Type typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type1, type2;
+        type1 = e1.typeCheck(typeEnv);
+        type2 = e2.typeCheck(typeEnv);
+
+        if (type1.equals(new IntType())) {
+            if (type2.equals(new IntType())) {
+                return new IntType();
+            } else throw new MyException("second operand is not an integer");
+        } else throw new MyException("first operand is not an integer");
+
+    }
     @Override
     public String toString() {
         return e1.toString() + " " + op + " " + e2.toString();

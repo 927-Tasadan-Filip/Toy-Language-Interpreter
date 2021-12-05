@@ -2,7 +2,9 @@ package Model.Expressions;
 
 import Model.DataStructures.MyIDictionary;
 import Model.DataStructures.MyIHeap;
+import Model.Types.BoolType;
 import Model.Types.IntType;
+import Model.Types.Type;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
 import Model.Values.Value;
@@ -89,11 +91,22 @@ public class RelationalExp implements Exp{
                         throw new MyException("invalid relational operator");
                 }
             }
-            else
-                throw new MyException("second operand is not an integer");
+            else throw new MyException("second operand is not an integer");
         }
-        else
-            throw new MyException("first operand is not an integer");
+        else throw new MyException("first operand is not an integer");
+    }
+
+    @Override
+    public Type typeCheck(MyIDictionary<String, Type> typeEnv) throws MyException {
+        Type type1, type2;
+        type1 = e1.typeCheck(typeEnv);
+        type2 = e2.typeCheck(typeEnv);
+
+        if(type1.equals(new IntType())) {
+            if(type2.equals(new IntType())) {
+                return new BoolType();
+            } else throw new MyException("second operand is not an integer");
+        } else throw new MyException("first operand is not an integer");
     }
 
     @Override
