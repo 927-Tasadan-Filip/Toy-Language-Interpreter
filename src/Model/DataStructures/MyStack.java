@@ -14,26 +14,26 @@ public class MyStack<T> implements MyIStack<T>{
         stack = new Stack<T>();
     }
 
-    public Stack<T> getStack() {
+    public synchronized Stack<T> getStack() {
         return stack;
     }
 
-    public void setStack(Stack<T> stack) {
+    public synchronized void setStack(Stack<T> stack) {
         this.stack = stack;
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return stack.isEmpty();
     }
 
     @Override
-    public void push(T v) {
+    public synchronized void push(T v) {
         stack.push(v);
     }
 
     @Override
-    public T pop() throws MyException {
+    public synchronized T pop() throws MyException {
         if(stack.isEmpty()) {
             throw new MyException("Empty stack.");
         }
@@ -41,7 +41,7 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public T top() throws MyException{
+    public synchronized T top() throws MyException{
         if(stack.isEmpty()) {
             throw new MyException("Empty stack.");
         }
@@ -49,7 +49,7 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public MyStack<T> shallowCopy() {
+    public synchronized MyStack<T> shallowCopy() {
         MyStack<T> copy_stack = new MyStack<>();
         Stack<T> aux_stack = new Stack<>();
         LinkedList<T> buffer_list = new LinkedList<>();
@@ -71,7 +71,7 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public String toString() {
+    public synchronized String toString() {
         MyStack<T> my_copy_stack = this.shallowCopy();
         String stack_string = "";
         while(!(my_copy_stack.isEmpty())) {
@@ -83,7 +83,7 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
-    public int size() {
+    public synchronized int size() {
         return stack.size();
     }
 }

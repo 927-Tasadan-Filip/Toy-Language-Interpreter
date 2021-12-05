@@ -15,17 +15,17 @@ public class MyList<T> implements MyIList<T>{
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return list.isEmpty();
     }
 
     @Override
-    public void append(T elem) {
+    public synchronized void append(T elem) {
         list.add(elem);
     }
 
     @Override
-    public void addAtPos(int pos, T elem) throws MyException {
+    public synchronized void addAtPos(int pos, T elem) throws MyException {
         if(pos < 0 || pos >= list.size()) {
             throw new MyException("Position out of bounds.");
         }
@@ -33,7 +33,7 @@ public class MyList<T> implements MyIList<T>{
     }
 
     @Override
-    public T remove(int pos) throws MyException{
+    public synchronized T remove(int pos) throws MyException{
         if(pos < 0 || pos >= list.size()) {
             throw new MyException("Position out of bounds.");
         }
@@ -42,7 +42,7 @@ public class MyList<T> implements MyIList<T>{
     }
 
     @Override
-    public T getElem(int pos) throws MyException{
+    public synchronized T getElem(int pos) throws MyException{
         if(pos < 0 || pos >= list.size()) {
             throw new MyException("Position out of bounds.");
         }
@@ -50,7 +50,7 @@ public class MyList<T> implements MyIList<T>{
     }
 
     @Override
-    public String toString() {
+    public synchronized String toString() {
         String list_string = new String();
         list_string = "";
         int i = 0;

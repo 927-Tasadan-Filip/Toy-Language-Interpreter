@@ -15,22 +15,22 @@ public class MyHeap<V> implements MyIHeap<V> {
     }
 
     @Override
-    public void setContent(Map<Integer,V> new_dict) {
+    public synchronized void setContent(Map<Integer,V> new_dict) {
         dictionary = (HashMap<Integer, V>)new_dict;
     }
 
     @Override
-    public HashMap<Integer, V> getContent() {
+    public synchronized HashMap<Integer, V> getContent() {
         return dictionary;
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return dictionary.isEmpty();
     }
 
     @Override
-    public boolean isDefined(Integer key) {
+    public synchronized boolean isDefined(Integer key) {
         if(dictionary.get(key) != null)
             return true;
         return false;
@@ -38,7 +38,7 @@ public class MyHeap<V> implements MyIHeap<V> {
     }
 
     @Override
-    public V lookup(Integer key) throws MyException {
+    public synchronized V lookup(Integer key) throws MyException {
         V ret_val = dictionary.get(key);
         if(ret_val == null) {
             throw new MyException("There is no element with the given key.");
@@ -48,12 +48,12 @@ public class MyHeap<V> implements MyIHeap<V> {
     }
 
     @Override
-    public void update(Integer key, V elem) {
+    public synchronized void update(Integer key, V elem) {
         dictionary.put(key, elem);
     }
 
     @Override
-    public Integer update(V elem) {
+    public synchronized Integer update(V elem) {
         Integer aux_key;
         aux_key = first_free_key;
         dictionary.put(first_free_key, elem);
@@ -62,12 +62,12 @@ public class MyHeap<V> implements MyIHeap<V> {
     }
 
     @Override
-    public V remove(Integer key) {
+    public synchronized V remove(Integer key) {
         return dictionary.remove(key);
     }
 
     @Override
-    public String toString() {
+    public synchronized String toString() {
         String dictionary_string = new String();
         dictionary_string = "";
         for(Integer key: dictionary.keySet()) {
@@ -79,7 +79,7 @@ public class MyHeap<V> implements MyIHeap<V> {
     }
 
     @Override
-    public String keysToString() {
+    public synchronized String keysToString() {
         String dictionary_string = new String();
         for(Integer key: dictionary.keySet()) {
             dictionary_string += key.toString() + "\n";

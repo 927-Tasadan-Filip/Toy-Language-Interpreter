@@ -113,7 +113,7 @@ public class Controller {
     }
 
     public void allStep() throws MyException{
-        executor = Executors.newFixedThreadPool(4);
+        executor = Executors.newFixedThreadPool(2);
         List<PrgState> prgList=removeCompletedPrg(program_repo.getPrgList());
         while(prgList.size() > 0) {
             List<List<Integer>> symTableAddrList = new ArrayList<>();
