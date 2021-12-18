@@ -9,4 +9,4 @@ The interpreter has the following functionalities:
 - dynamic variables handling using the heap
 - fork statement which allows concurrent program execution
 - type checking for all statements and expressions before run time
-- garbage collector that deallocates all the heap blocks that are no more referenced
+- garbage collector that deallocates all the heap blocks that are not referenced
